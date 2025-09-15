@@ -9,23 +9,50 @@ Analyze aviation safety PDF reports with GPT, classify per TC/SMS, and save/sear
 - Export: PDF (ReportLab) and Excel/CSV (pandas/openpyxl or xlsxwriter)
 - English and Français output
 
-## Quick Start (Windows)
-1. Create a virtual environment and install deps:
+## Quick Start
+
+### Option 1: Automated Setup (Recommended)
+```bash
+# Run the setup script (works on Windows, Mac, Linux)
+python setup.py
+```
+
+### Option 2: Manual Setup
+
+#### Windows:
+1. Run `install.bat` or manually:
    ```powershell
    py -3 -m venv .venv
    .\.venv\Scripts\activate
    pip install -U pip
-   pip install pymupdf openai numpy reportlab pandas openpyxl xlsxwriter
+   pip install -r requirements.txt
    ```
-2. Add your OpenAI API key in `config.py`:
-   ```python
-   API_KEY = "sk-..."
+
+#### Linux/Mac:
+1. Run `install.sh` or manually:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -U pip
+   pip install -r requirements.txt
    ```
-3. Run the app:
-   ```powershell
-   python gui.py
+
+### Configuration:
+2. Copy and configure your API key:
+   ```bash
+   cp config.example.py config.py
+   # Edit config.py and add your OpenAI API key
    ```
-   Or use `run.bat` for console-less start.
+
+### Running the Application:
+
+#### Desktop GUI (Tkinter):
+- **Windows:** Double-click `run.bat` or run `python gui.py`
+- **Linux/Mac:** `python gui.py`
+
+#### Web Interface (Flask):
+- **All platforms:** `python start_web.py`
+- Then open http://localhost:5000 in your browser
 
 ## Privacy
 - `.gitignore` excludes `config.py`, `.env`, and `safety_reports.db` to keep secrets and local data private.
